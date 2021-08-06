@@ -1,0 +1,45 @@
+課題0提出用
+
+1.
+name1 = 'ねずこ'
+name2 = 'ぜんいつ'
+print(name1 + 'と' + name2  + 'は仲間です')
+
+2.
+name1 = 'ねずこ'
+name2 = 'むざん'
+if name2 == 'むざん':
+  print(name1 + 'と' + name2  + 'は仲間ではありません')
+else:
+  print(name1 + 'と' + name2  + 'は仲間です')
+
+3.
+name = ["たんじろう","ぎゆう","ねずこ","むざん"]
+name.append('ぜんいつ')
+print(name)
+
+4.
+name = ["たんじろう","ぎゆう","ねずこ","むざん"]
+name.append('ぜんいつ')
+for i in name:
+  print(i)
+
+5.
+import random
+name = ["たんじろう","ぎゆう","ねずこ","むざん"]
+
+def call_name():
+  number = random.randint(0,3)
+  choice_name = name[number]
+  print(choice_name)
+
+call_name()
+
+6.
+name = ["たんじろう","ぎゆう","ねずこ","むざん"]
+
+def name_check(namae):
+  if namae in name:
+    print(namae + 'は含まれます')
+
+name_check('たんじろう')
