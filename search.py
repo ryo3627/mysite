@@ -1,32 +1,26 @@
+import pandas as pd
+import eel
 
-### 検索ツールサンプル
-### これをベースに課題の内容を追記してください
+### デスクトップアプリ作成課題
+def kimetsu_search(word,csv_file):
+    # 検索対象取得
+    df=pd.read_csv("./" + csv_file)
+    source=list(df["name"])
 
-# 検索ソース
-# ファイルパス
-path = 'C:\My Achievement\source.csv'
-
-# リスト内容
-w = 'ねずこ\nたんじろう\nきょうじゅろう\nぎゆう\nげんや\nかなお\nぜんいつ'
-
-# リスト書込
-with open(path,mode='w') as f:
-    f.write(w)
-
-# リスト読込
-with open(path) as f:
-    source = [s.strip() for s in f.readlines()]
-
-### 検索ツール
-def search():
-    word =input("鬼滅の登場人物の名前を入力してください >>> ")
-    
-    ### ここに検索ロジックを書く
+    # 検索
     if word in source:
-        print("{}が見つかりました".format(word))
+        text = "『{}』はあります".format(word)
+        eel.view_log_js(text)
     else:
-        print('{}が見つかりませんでした'.format(word))
+        text = "『{}』はありません".format(word)
+        eel.view_log_js(text)
+        # 追加
+        #add_flg=input("追加登録しますか？(0:しない 1:する)　＞＞　")
+        #if add_flg=="1":
         source.append(word)
 
-if __name__ == "__main__":
-    search()
+    
+    # CSV書き込み
+    df=pd.DataFrame(source,columns=["name"])
+    df.to_csv("./" + csv_file,encoding="utf_8-sig")
+    print(source)
